@@ -1,0 +1,38 @@
+id: my-custom-policy
+name: my-custom-policy
+description: My First Custom Policy
+category: Custom
+type: custom
+resourceLevelSupported: true
+encryptionSupported: false
+standalone: true
+requiredCharacteristics: []
+providedCharacteristics: []
+configuration: 
+
+   - propertyName: ipAddress
+     name: User IP Address
+     description: Set User IP Address
+     type: expression
+     optional: false
+     sensitive: false
+     defaultValue: "#[attributes.headers['x-forwarded-for']]"
+     
+   - propertyName: userName
+     name: User Name
+     description: Enter User Name.
+     type: string
+     optional: true
+     sensitive: false
+     allowMultiple: true
+     dependsOnKey: otherParam
+     dependsOnValue: true
+     
+   - propertyName: otherParam
+     name: Do You Want Another Param ?
+     description: To Display Other param.
+     type: boolean
+     optional: false
+     defaultValue: false
+     
+     
